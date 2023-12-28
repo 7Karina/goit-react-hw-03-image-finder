@@ -8,7 +8,6 @@ import {
 
 class SearchBar extends Component {
   state = {
-    serchName: '',
     inputValue: '',
   };
 
@@ -18,8 +17,7 @@ class SearchBar extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const searchQuery = event.target.elements.serchName.value.trim();
-    this.props.onSubmit(searchQuery);
+    this.props.onSubmit(this.state);
     event.target.reset();
   };
 
