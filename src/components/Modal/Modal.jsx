@@ -2,16 +2,10 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import { Overlay, ModalWindow } from './Modal.styled';
 
+const modalRoot = document.querySelector('#modal-root');
+
 class Modal extends Component {
-  modalRoot =
-    document.getElementById('modal-root') || document.createElement('div');
-
   componentDidMount() {
-    if (!document.getElementById('modal-root')) {
-      this.modalRoot.setAttribute('id', 'modal-root');
-      document.body.appendChild(this.modalRoot);
-    }
-
     window.addEventListener('keydown', this.handleKeyDown);
     document.body.style.overflow = 'hidden';
   }
@@ -22,7 +16,7 @@ class Modal extends Component {
   }
 
   handleKeyDown = event => {
-    if (event.key === 'Escape') {
+    if (event.code === 'Escape') {
       this.props.onClose();
     }
   };
@@ -42,7 +36,7 @@ class Modal extends Component {
           <img src={largeImageURL} alt={tags} />
         </ModalWindow>
       </Overlay>,
-      this.modalRoot
+      modalRoot
     );
   }
 }
