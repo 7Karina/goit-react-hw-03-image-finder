@@ -14,6 +14,6 @@ export const getImages = async (query, page) => {
 };
 
 export const normalazedImages = imagesArray =>
-  imagesArray.map(({ id, tags, webformatURL, largeImageYRL }) => {
-    return { id, tags, webformatURL, largeImageYRL };
+  imagesArray.map(({ id, tags, webformatURL, largeImageURL }) => {
+    return { id, tags, webformatURL, largeImageURL };
   });
